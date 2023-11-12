@@ -7,8 +7,8 @@ router.get("/", (request, response)=> {
     response.render('home.html.twig'); 
 })
 
-router.get("/contact", (request, response)=> {
-    response.end('Contact'); 
+router.get("/livres", (request, response)=> {
+    response.render('livres/liste.html.twig'); 
 })
 
 /* Page d'erreur à la fin des routes */ 
