@@ -11,6 +11,12 @@ router.get("/livres", (request, response)=> {
     response.render('livres/liste.html.twig'); 
 })
 
+/* :nom parametre, info envoyée à la vue avec un objet JSON { nom: request.params.nom } */ 
+router.get("/livres/:nom", (request, response)=> {
+    //console.log(request.params.nom)
+    response.render('livres/livre.html.twig', { nom:request.params.nom }); 
+})
+
 /* Page d'erreur à la fin des routes */ 
 router.use( (request, response, suite)=> {
     const error = new Error("Page introuvable");
