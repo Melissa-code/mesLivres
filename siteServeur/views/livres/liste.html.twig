@@ -1,80 +1,95 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}Liste des livres{% endblock title %}
-    
-    {% block content %}
+{% block title %}Liste des livres{% endblock title %}
 
-        <!-- Table -->
-        <section class="table-section">
-            <table id="table-books" class="table text-center table-hover disabled table-striped border border-dark">
-                <thead class="border border-dark" >
-                    <tr id="titres-colonnes">
-                        <th scope="col"><h4 class="text-primary">Titre</h4></th>
-                        <th scope="col"><h4 class="text-primary">Auteur</h4></th>
-                        <th scope="col"><h4 class="text-primary">Nombre de pages</h4></th>
-                        <th scope="col" colspan="2"><h4 class="text-primary">Actions</h4></th>
-                    </tr>
-                </thead>
-                <tbody id="tBodyBooks">
-                    <tr>
-                        <td scope="col"><a href="/livres/livre1">Livre 1</a></th>
-                        <td scope="col">Auteur 1</th>
-                        <td scope="col">100</th>
-                        <td scope="col" colspan="2">
-                            <button type="button" class="btn btn-warning" >
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td scope="col"><a href="/livres/livre2">Livre 2</a></th>
-                        <td scope="col">Auteur 2</th>
-                        <td scope="col">200</th>
-                        <td scope="col" colspan="2">
-                            <button type="button" class="btn btn-warning" >
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td scope="col"><a href="/livres/livre3">Livre 3</a></th>
-                        <td scope="col">Auteur 3</th>
-                        <td scope="col">300</th>
-                        <td scope="col" colspan="2">
-                            <button type="button" class="btn btn-warning" >
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td scope="col"><a href="/livres/livre4">Livre 4</a></th>
-                        <td scope="col">Auteur 4</th>
-                        <td scope="col">400</th>
-                        <td scope="col" colspan="2">
-                            <button type="button" class="btn btn-warning" >
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger" >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
+{% block content %}
 
-            <!-- Add a book button -->
-            <div class="d-grid gap-1">
-                <button class="btn btn-lg btn-primary w-100 rounded-1 btn-add">Ajouter un livre</button>
-            </div>
-        </section>
-    
-    {% endblock content %}
+<!-- Table -->
+<section class="table-section">
+    <table id="table-books" class="table text-center table-hover disabled table-striped border border-dark">
+        <thead class="border border-dark" >
+            <tr id="titres-colonnes">
+                <th scope="col"><h4 class="text-primary">Titre</h4></th>
+                <th scope="col"><h4 class="text-primary">Auteur</h4></th>
+                <th scope="col"><h4 class="text-primary">Nombre de pages</h4></th>
+                <th scope="col" colspan="2"><h4 class="text-primary">Actions</h4></th>
+            </tr>
+        </thead>
+        <tbody id="tBodyBooks">
+            {% for livre in listeLivres %}
+                <tr>
+                    <td scope="col"><a href="/livres/{{ livre._id }}">{{ livre.nom }}</a></th>
+                    <td scope="col">{{ livre.auteur }}</th>
+                    <td scope="col">{{ livre.pages }}</th>
+                    <td scope="col" colspan="2">
+                        <button type="button" class="btn btn-warning">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            {# <tr>
+                <td scope="col"><a href="/livres/livre1">Livre 1</a></th>
+                <td scope="col">Auteur 1</th>
+                <td scope="col">100</th>
+                <td scope="col" colspan="2">
+                    <button type="button" class="btn btn-warning">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="col"><a href="/livres/livre2">Livre 2</a></th>
+                <td scope="col">Auteur 2</th>
+                <td scope="col">200</th>
+                <td scope="col" colspan="2">
+                    <button type="button" class="btn btn-warning" >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </th>
+            </tr>
+            <tr>
+                <td scope="col"><a href="/livres/livre3">Livre 3</a></th>
+                <td scope="col">Auteur 3</th>
+                <td scope="col">300</th>
+                <td scope="col" colspan="2">
+                    <button type="button" class="btn btn-warning" >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </th>
+            </tr>
+            <tr>
+                <td scope="col"><a href="/livres/livre4">Livre 4</a></th>
+                <td scope="col">Auteur 4</th>
+                <td scope="col">400</th>
+                <td scope="col" colspan="2">
+                    <button type="button" class="btn btn-warning" >
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" >
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </th>
+            </tr> #}
+        </tbody>
+    </table>
+
+    <!-- Add a book button -->
+    <div class="d-grid gap-1">
+        <button class="btn btn-lg btn-primary w-100 rounded-1 btn-add">Ajouter un livre</button>
+    </div>
+</section>
+
+{% endblock content %}

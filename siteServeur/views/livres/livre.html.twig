@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ nom }} {% endblock title %}
+{% block title %} {{ livre.nom }} {% endblock title %}
 
 {% block content %}
     <div class="row m-2">
         <div class="col-md-6">
             <h2>Informations</h2>
-            <p>Auteur: </p>
-            <p>Nombre de pages: </p>
+            <p>Auteur: {{ livre.auteur }}</p>
+            <p>Nombre de pages: {{ livre.pages }} </p>
             <img src="https://picsum.photos/200/200">
         </div>
         <div class="col-md-6">
             <h2>Résumé</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <p>{{ livre.description }} Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                Suspendisse in commodo velit, ultrices placerat augue. 
                Pellentesque non est quis augue porta consequat. 
                In congue elit libero, a euismod massa feugiat sit amet. 
