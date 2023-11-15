@@ -31,65 +31,38 @@
                     </td>
                 </tr>
             {% endfor %}
-            {# <tr>
-                <td scope="col"><a href="/livres/livre1">Livre 1</a></th>
-                <td scope="col">Auteur 1</th>
-                <td scope="col">100</th>
-                <td scope="col" colspan="2">
-                    <button type="button" class="btn btn-warning">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td scope="col"><a href="/livres/livre2">Livre 2</a></th>
-                <td scope="col">Auteur 2</th>
-                <td scope="col">200</th>
-                <td scope="col" colspan="2">
-                    <button type="button" class="btn btn-warning" >
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger" >
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </th>
-            </tr>
-            <tr>
-                <td scope="col"><a href="/livres/livre3">Livre 3</a></th>
-                <td scope="col">Auteur 3</th>
-                <td scope="col">300</th>
-                <td scope="col" colspan="2">
-                    <button type="button" class="btn btn-warning" >
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger" >
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </th>
-            </tr>
-            <tr>
-                <td scope="col"><a href="/livres/livre4">Livre 4</a></th>
-                <td scope="col">Auteur 4</th>
-                <td scope="col">400</th>
-                <td scope="col" colspan="2">
-                    <button type="button" class="btn btn-warning" >
-                        <i class="fa-solid fa-pen-to-square"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger" >
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </th>
-            </tr> #}
         </tbody>
     </table>
 
     <!-- Add a book button -->
     <div class="d-grid gap-1">
-        <button class="btn btn-lg btn-primary w-100 rounded-1 btn-add">Ajouter un livre</button>
+        <button class="btn btn-lg btn-primary w-100 rounded-1 btn-add" onClick="displayForm()">Ajouter un livre</button>
     </div>
 </section>
+
+<!-- Form to add a book -->
+<section class="formulaire">
+    <form action="" class="d-none" id="addFormBook" method="POST" >
+        <fieldset>
+            <legend>Création d'un livre
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titre</label>
+                    <input type="text" class="form-control" id="title">
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label">Auteur</label>
+                    <input type="text" class="form-control" id="author">
+                </div>
+                <div class="mb-3">
+                    <label for="nbPages" class="form-label">Nombre de pages</label>
+                    <input type="number" class="form-control" id="nbPages" >
+                </div>
+                <button id="validationFormAddBook" type="submit" class="btn btn-primary w-100">Enregistrer</button>
+            </legend>
+        </fieldset>
+    </form>
+</section>
+
+<script type="text/javascript"  src="/javascript/ajoutLivre.js"></script>
 
 {% endblock content %}

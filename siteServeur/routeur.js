@@ -27,6 +27,10 @@ router.get("/livres", (request, response)=> {
      .catch(); 
 })
 
+router.post("/livres", (request, response) => {
+    console.log('formulaire reçu')
+})
+
 /**
  * Route: Display a book with information 
  * return view with livre
