@@ -3,6 +3,7 @@ let server = express();
 const morgan = require('morgan'); 
 const router = require('./routeur'); 
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser'); 
 
 /* https://mongoosejs.com/docs/ */
 main().catch(err => console.log(err));
@@ -18,5 +19,9 @@ const livresModel = require('./models/livresModel');
 server.use(express.static('public'));
 // middleware
 server.use(morgan('dev'));
+// Traite URL et info user postées 
+server.use(bodyParser.urlencoded({extended:false})); 
+
 server.use("/", router); // for URLs that begin by /
+
 server.listen(3000);  

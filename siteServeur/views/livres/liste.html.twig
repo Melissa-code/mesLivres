@@ -47,15 +47,19 @@
             <legend>Création d'un livre
                 <div class="mb-3">
                     <label for="title" class="form-label">Titre</label>
-                    <input type="text" class="form-control" id="title">
+                    <input type="text" class="form-control" id="title" name="title">
                 </div>
                 <div class="mb-3">
                     <label for="author" class="form-label">Auteur</label>
-                    <input type="text" class="form-control" id="author">
+                    <input type="text" class="form-control" id="author" name="author">
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label">Description</label>
+                    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="nbPages" class="form-label">Nombre de pages</label>
-                    <input type="number" class="form-control" id="nbPages" >
+                    <input type="number" class="form-control" id="nbPages" name="nbPages">
                 </div>
                 <button id="validationFormAddBook" type="submit" class="btn btn-primary w-100">Enregistrer</button>
             </legend>

@@ -1,6 +1,7 @@
 let express = require('express'); 
 let router = express.Router(); 
 const twig = require('twig'); 
+const mongoose = require('mongoose');
 const livresModel = require('./models/livresModel'); 
 
 /**
@@ -27,8 +28,24 @@ router.get("/livres", (request, response)=> {
      .catch(); 
 })
 
+/**
+ * Add a book
+ */
 router.post("/livres", (request, response) => {
-    console.log('formulaire reçu')
+    const livre = new livresModel({
+        _id: new mongoose.Types.ObjectId(), 
+        nom: request.body.title, 
+        auteur: request.body.author, 
+        pages: request.body.nbPages,
+        description: request.body.desc
+    }); 
+    livre.save()
+    .then(result => {
+        response.redirect('/livres'); 
+    })
+    .catch(error => {
+        console.log(error);
+    })
 })
 
 /**
