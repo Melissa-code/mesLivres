@@ -66,6 +66,21 @@ router.get("/livres/:id", (request, response)=> {
     }); 
 })
 
+/**
+ * Delete a book 
+ * deleteOne() or deleteMany() != remove()
+ */
+router.post("/livres/delete/:id", (request, response)=> {
+    livresModel.deleteOne({_id:request.params.id})
+   .exec()
+   .then(result => {
+        response.redirect('/livres'); 
+   }) 
+   .catch(error => {
+        console.log(error);
+    }); 
+}); 
+
 /* Page d'erreur à la fin des routes */ 
 router.use( (request, response, suite)=> {
     const error = new Error("Page introuvable");
