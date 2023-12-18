@@ -3,6 +3,7 @@ let router = express.Router();
 const twig = require('twig'); 
 const mongoose = require('mongoose');
 const livresModel = require('./models/livresModel'); 
+const session = require('express-session'); 
 
 /**
  * Route: display the home page
@@ -22,8 +23,7 @@ router.get("/livres", (request, response)=> {
      livresModel.find()
         .exec()
         .then(livres => {
-            //console.log(livres)
-            response.render('livres/liste.html.twig', {listeLivres: livres}); 
+            response.render('livres/liste.html.twig', {listeLivres: livres, message: response.locals.message}); 
         })
      .catch(); 
 })
@@ -74,6 +74,10 @@ router.post("/livres/delete/:id", (request, response)=> {
     livresModel.deleteOne({_id:request.params.id})
    .exec()
    .then(result => {
+        request.session.message = {
+            type : 'success',
+            content : 'Suppression du livre effectuée.'
+        }
         response.redirect('/livres'); 
    }) 
    .catch(error => {

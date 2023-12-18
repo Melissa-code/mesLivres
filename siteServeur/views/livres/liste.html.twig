@@ -1,76 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des livres{% endblock title %}
+{% block title %}Liste des livres
+{% endblock title %}
 
 {% block content %}
 
 <!-- Table -->
 <section class="table-section">
-    <table id="table-books" class="table text-center table-hover disabled table-striped border border-dark">
-        <thead class="border border-dark" >
-            <tr id="titres-colonnes">
-                <th scope="col"><h4 class="text-primary">Titre</h4></th>
-                <th scope="col"><h4 class="text-primary">Auteur</h4></th>
-                <th scope="col"><h4 class="text-primary">Nombre de pages</h4></th>
-                <th scope="col" colspan="2"><h4 class="text-primary">Actions</h4></th>
-            </tr>
-        </thead>
-        <tbody id="tBodyBooks">
-            {% for livre in listeLivres %}
-                <tr>
-                    <td scope="col"><a href="/livres/{{ livre._id }}">{{ livre.nom }}</a></th>
-                    <td scope="col">{{ livre.auteur }}</th>
-                    <td scope="col">{{ livre.pages }}</th>
+	<table id="table-books" class="table text-center table-hover disabled table-striped border border-dark">
+		<thead class="border border-dark">
+			<tr id="titres-colonnes">
+				<th scope="col">
+					<h4 class="text-primary">Titre</h4>
+				</th>
+				<th scope="col">
+					<h4 class="text-primary">Auteur</h4>
+				</th>
+				<th scope="col">
+					<h4 class="text-primary">Nombre de pages</h4>
+				</th>
+				<th scope="col" colspan="2">
+					<h4 class="text-primary">Actions</h4>
+				</th>
+			</tr>
+		</thead>
+		<tbody id="tBodyBooks">
+			{% for livre in listeLivres %}
+				<tr>
+					<td scope="col">
+						<a href="/livres/{{ livre._id }}">{{ livre.nom }}</a>
+					</td>
+                    <td scope="col">{{ livre.auteur }}</td>
+                    <td scope="col">{{ livre.pages }}</td>
                     <td scope="col" colspan="2">
-                    <form method="POST" action="/livres/delete/{{livre._id}}" onsubmit="return confirm('Confirmer la suppression du livre');">
-                         
+                        <form method="POST" action="/livres/delete/{{livre._id}}" onsubmit="return confirm('Confirmer la suppression du livre');">
                             <button type="button" class="btn btn-warning">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
-                           
-                           <button type="submit" class="btn btn-danger" >
+                            <button type="submit" class="btn btn-danger">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </form>
                     </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+				</tr>
+			</th>
+		</tbody>
+{% endfor %}
+</table>
 
-    <!-- Add a book button -->
-    <div class="d-grid gap-1">
-        <button class="btn btn-lg btn-primary w-100 rounded-1 btn-add" onClick="displayForm()">Ajouter un livre</button>
-    </div>
-</section>
-
-<!-- Form to add a book -->
-<section class="formulaire">
-    <form action="" class="d-none" id="addFormBook" method="POST" >
-        <fieldset>
-            <legend>Création d'un livre
-                <div class="mb-3">
-                    <label for="title" class="form-label">Titre</label>
-                    <input type="text" class="form-control" id="title" name="title">
-                </div>
-                <div class="mb-3">
-                    <label for="author" class="form-label">Auteur</label>
-                    <input type="text" class="form-control" id="author" name="author">
-                </div>
-                <div class="mb-3">
-                    <label for="desc" class="form-label">Description</label>
-                    <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="nbPages" class="form-label">Nombre de pages</label>
-                    <input type="number" class="form-control" id="nbPages" name="nbPages">
-                </div>
-                <button id="validationFormAddBook" type="submit" class="btn btn-primary w-100">Enregistrer</button>
-            </legend>
-        </fieldset>
-    </form>
-</section>
-
-<script type="text/javascript"  src="/javascript/ajoutLivre.js"></script>
-
-{% endblock content %}
+<!-- Add a book button --><div class="d-grid gap-1"><button class="btn btn-lg btn-primary w-100 rounded-1 btn-add" onclick="displayForm()">Ajouter un livre</button></div></section><!-- Form to add a book --><section class="formulaire"><form action="" class="d-none" id="addFormBook" method="POST"><fieldset><legend>Création d'un livre<div class="mb-3">
+<label for="title" class="form-label">Titre</label>
+<input type="text" class="form-control" id="title" name="title"></div><div class="mb-3">
+<label for="author" class="form-label">Auteur</label>
+<input type="text" class="form-control" id="author" name="author"></div><div class="mb-3">
+<label for="desc" class="form-label">Description</label>
+<textarea class="form-control" id="desc" name="desc" rows="3"></textarea></div><div class="mb-3">
+<label for="nbPages" class="form-label">Nombre de pages</label>
+<input type="number" class="form-control" id="nbPages" name="nbPages"></div><button id="validationFormAddBook" type="submit" class="btn btn-primary w-100">Enregistrer</button></legend></fieldset></form></section><script type="text/javascript" src="/javascript/ajoutLivre.js"></script>{% endblock content %}
